@@ -4,8 +4,20 @@ import Card from './card';
 import ScheduleData from './scheduledata';
 
 class Schedule extends Component {
-  renderCards() {
+  constructor() {
+    super();
+    this.state = {
+      sdata: null
+    }
+  }
+
+  componentWillMount() {
     const sdata = ScheduleData.data;
+    this.setState({ sdata });
+  }
+
+  renderCards() {
+    const sdata = this.state.sdata;
     return sdata.map((data) =>
     <Card
       key={data.timing}
